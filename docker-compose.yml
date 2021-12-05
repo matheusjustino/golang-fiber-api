@@ -1,0 +1,20 @@
+version: "3.7"
+
+services:
+  mongo:
+    image: mongo
+    container_name: db
+    ports:
+      - "27017:27017"
+
+  api:
+    build: .
+    container_name: api
+    environment:
+      DB_URI: "mongodb://mongo:27017"
+      DB_NAME: "go-mongo"
+      SECRET: "logindobatman"
+    ports:
+      - "5000:5000"
+    depends_on:
+      - mongo
