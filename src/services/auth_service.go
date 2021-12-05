@@ -45,8 +45,8 @@ func (*AuthService) Login(data *models.LoginModel) (*string, *fiber.Error) {
 		return nil, fiber.NewError(fiber.StatusBadRequest, "Invalid credentials")
 	}
 
-	authService := NewJwtService()
-	token, generateTokenErr := authService.GenerateToken(user.ID.Hex())
+	jwtService := NewJwtService()
+	token, generateTokenErr := jwtService.GenerateToken(user.ID.Hex())
 	if generateTokenErr != nil {
 		return nil, fiber.NewError(generateTokenErr.Code, generateTokenErr.Message)
 	}
