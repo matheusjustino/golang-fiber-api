@@ -16,3 +16,7 @@
 
 - `make dev` to run with hot reload
 - `go mod tidy` to remove unused packages
+
+## DOCKER
+
+- `docker-compose up --build` to run with docker
